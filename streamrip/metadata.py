@@ -126,6 +126,8 @@ class TrackMetadata:
 
         :param dict resp: from API
         """
+        self.media = "WEB"
+        
         if self.__source == "qobuz":
             # Tags
             self.album = resp.get("title", "Unknown Album")
@@ -141,6 +143,7 @@ class TrackMetadata:
 
             self.albumcomposer = safe_get(resp, "composer", "name")
             self.label = resp.get("label")
+            self.upc = resp.get("upc", "")
             self.description = resp.get("description")
             self.disctotal = (
                 max(
@@ -204,6 +207,7 @@ class TrackMetadata:
             self.date = resp.get("release_date")
             self.albumartist = safe_get(resp, "artist", "name")
             self.label = resp.get("label")
+            self.upc = resp.get("upc", "")
             self.url = resp.get("link")
             self.explicit = resp.get("parental_warning", False)
 
@@ -234,6 +238,7 @@ class TrackMetadata:
             self.tracknumber = track.get("track_number", 1)
             self.discnumber = track.get("media_number", 1)
             self.artist = safe_get(track, "performer", "name")
+            self.isrc = track.get("isrc", "")
 
         elif self.__source == "tidal":
             self.title = track["title"].strip()
@@ -249,6 +254,7 @@ class TrackMetadata:
             self.tracknumber = track.get("track_position", 1)
             self.discnumber = track.get("disk_number", 1)
             self.artist = safe_get(track, "artist", "name")
+            self.isrc = track.get("isrc", "")
 
         elif self.__source == "soundcloud":
             self.title = track["title"].strip()
