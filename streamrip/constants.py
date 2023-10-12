@@ -113,8 +113,15 @@ __METADATA_TYPES = (
     "date",
 )
 
+__FLAC_ADDITIONAL_KEYS = {
+    "label",
+    "barcode",
+    "isrc",
+    "media",
+}
 
 FLAC_KEY = {v: v.upper() for v in __METADATA_TYPES}
+FLAC_KEY.update({v: v.upper() for v in __FLAC_ADDITIONAL_KEYS})
 MP4_KEY = dict(zip(__METADATA_TYPES, __MP4_KEYS))
 MP3_KEY = dict(zip(__METADATA_TYPES, __MP3_KEYS))
 
