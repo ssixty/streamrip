@@ -337,6 +337,8 @@ class RipCore(list):
                 item.tag(exclude_tags=arguments["exclude_tags"])
                 if arguments["conversion"]["enabled"]:
                     item.convert(**arguments["conversion"])
+            
+            print(item.folder)
 
     def scrape(self, featured_list: str, max_items: int = 500):
         """Download all of the items in a Qobuz featured list.
